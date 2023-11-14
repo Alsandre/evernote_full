@@ -5,6 +5,8 @@
 
 :root{
   --black: #000000;
+  --black-light:#1A1A1A;
+  --dark-light: #262626;
   --grey: #404040;
   --green: #2FA82D;
   --green-hover: #268425;
@@ -20,6 +22,7 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
 }
 
 code {
@@ -27,7 +30,7 @@ code {
     monospace;
 }
 
-input{
+input, textarea{
   outline: none;
   border:none;
   background-image:none;

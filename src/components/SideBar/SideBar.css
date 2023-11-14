@@ -2,6 +2,7 @@
     height: 100vh;
     width: 250px;
     background-color: var(--black);
+    border-right: 1px solid var(--lightGrey);
 
     position: fixed;
     left: 0;
@@ -18,8 +19,6 @@
     box-sizing: border-box;
     display: flex;
     flex-direction: column;
-    gap: 15px;
-    padding-left: 20px;
 
     margin-top: 25px;
 }
@@ -29,7 +28,22 @@
 }
 
 .sidebar_link_block{
+    box-sizing: border-box;
+    margin: 0 auto;
+    width: 100%;
     color: var(--lightGrey);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 0 10px 20px;
+
+}
+
+.sidebar_link_block:hover{
+    background-color: var(--grey);
+}
+
+.block_link_icon_name{
     display: flex;
     align-items: center;
     gap: 10px;

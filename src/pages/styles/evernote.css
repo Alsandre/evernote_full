@@ -1,0 +1,29 @@
+.main_container{
+    box-sizing: border-box;
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    background-color: var(--black);
+    
+    padding-left: 250px;
+}
+
+.main_container_bg{
+    height: 45%;
+    width: 100%;
+    overflow: hidden;
+    background-image: url('../../utils/images/bg.png');
+    background-repeat: none;
+    background-position: 0 -350px;
+    background-size: cover;
+    background-attachment: fixed;
+}
+
+.top_widgets{
+    position: relative;
+    left: 30px;
+    top: -100px;
+
+    display: flex;
+    gap: 30px;
+}
