@@ -1,0 +1,27 @@
+.createNote{
+    box-sizing: border-box;
+    width: 100%;
+    min-height: 100vh;
+    padding-left: 250px;
+    background-color: var(--dark-light);
+    color: whitesmoke;
+}
+.note_create_title{
+    text-align: center;
+    font-weight: 600;
+    font-size: 20px;
+    padding: 40px;
+}
+
+.noteArea{
+    box-sizing: border-box;
+    padding: 0px 50px 50px 50px;
+
+    margin-bottom: 10px;
+}
+
+.custom_editor{
+    height: 500px;
+    overflow: hidden;
+    padding-bottom: 50px;
+}

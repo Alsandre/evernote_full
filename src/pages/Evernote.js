@@ -7,7 +7,7 @@ import ScratchPad from '../components/scratchPad/ScratchPad'
 export default function Evernote() {
   return (
     <div>
-        <SideBar />
+        
 
         <div className='main_container'>
           

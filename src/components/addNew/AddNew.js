@@ -32,8 +32,20 @@ export default function AddNew() {
         </div>
         
         <div className={dashClas} onMouseLeave={resetDashTrigger}>
-          <ShortCutElemen cName='shortCut_element' firsIco={notes} text='Notes' funName={log0}/>
-          <ShortCutElemen cName='shortCut_element_task' firsIco={checkedIco} text='Task'/>
+          <ShortCutElemen 
+              cName='shortCut_element' 
+              firsIco={notes} text='Notes' 
+              funName={log0}
+              linkName='/pages/CreateNote.js'
+          />
+
+
+          <ShortCutElemen 
+              cName='shortCut_element_task' 
+              firsIco={checkedIco} 
+              text='Task'
+          />
+
         </div>
 
         
