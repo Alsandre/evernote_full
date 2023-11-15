@@ -44,10 +44,10 @@ const formats = [
 
 export default function CreateNote() {
 
-  const [content, setContetn] = useState({})
+  const [content, setContetn] = useState(JSON.parse(localStorage.getItem('editorNote')) || {})
 
   useEffect(()=>{
-    console.log(content);
+    localStorage.setItem('editorNote', JSON.stringify(content))
   },[content])
 
   return (
