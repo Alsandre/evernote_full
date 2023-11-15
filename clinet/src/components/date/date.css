@@ -1,0 +1,14 @@
+.date{
+    position: absolute;
+    top: 30px;
+    right: 30px;
+
+    display: flex;
+    color: whitesmoke;
+    font-size: 900;
+    font-size: 14px;
+    text-transform: uppercase;  
+    padding: 10px;
+    background-color: var(--grey);
+    border-radius: 10px;
+}
