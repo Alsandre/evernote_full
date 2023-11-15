@@ -1,5 +1,4 @@
 import React from 'react'
-import SideBar from '../components/SideBar/SideBar'
 import "./styles/evernote.css"
 import NotesDashboard from '../components/notesDashbouard/NotesDashboard'
 import ScratchPad from '../components/scratchPad/ScratchPad'

@@ -23,6 +23,7 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   overflow-x: hidden;
+  background-color: var(--black);
 }
 
 code {
@@ -45,4 +46,20 @@ a{
   width: fit-content;
   height: fit-content;
   text-decoration: none;
+}
+
+.ql-align-center{
+  text-align: center;
+}
+
+.ql-align-left{
+  text-align: center;
+}
+
+.ql-align-right{
+  text-align: center;
+}
+
+.ql-align-justify{
+  text-align: justify;
 }

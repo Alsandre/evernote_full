@@ -20,10 +20,6 @@ export default function AddNew() {
     setDashClass('add_dashbouard')
   }
 
-  const log0 = () => {
-    console.log(0);
-  }
-
   return (
     <div className='add_new'>
 
@@ -35,7 +31,6 @@ export default function AddNew() {
           <ShortCutElemen 
               cName='shortCut_element' 
               firsIco={notes} text='Notes' 
-              funName={log0}
               linkName='/pages/CreateNote.js'
           />
 

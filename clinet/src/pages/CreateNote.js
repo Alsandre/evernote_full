@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import "./styles/CreateNote.css"
 import ReactQuill from 'react-quill';
 import { Quill } from 'react-quill';
@@ -43,6 +43,13 @@ const formats = [
 
 
 export default function CreateNote() {
+
+  const [content, setContetn] = useState({})
+
+  useEffect(()=>{
+    console.log(content);
+  },[content])
+
   return (
     <div className='createNote'> 
 
@@ -51,7 +58,8 @@ export default function CreateNote() {
       <div className='noteArea'>
         <ReactQuill
             theme="snow"
-            
+            value={content}
+            onChange={setContetn}
             modules={modules}
             formats={formats}
             className='custom_editor'
