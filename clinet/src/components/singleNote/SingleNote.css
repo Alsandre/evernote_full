@@ -1,6 +1,7 @@
 .singleNote{
     box-sizing: border-box;
     min-width: 170px;
+    max-width: 170px;
     height: 250px;
 
     background-color: var(--dark-light);
@@ -12,6 +13,9 @@
 
     transition: all 0.3s ease;
     cursor: pointer;
+
+    text-wrap: wrap;
+    overflow: hidden;
 }
 
 .singleNote:hover{
@@ -35,5 +39,22 @@
 .note_title_desc{
     display: flex;
     flex-direction: column;
-    gap: 5px;
+    gap: 15px;
+
+    max-height: 180px;
+    overflow: hidden;
+}
+
+.single_note_title{
+    font-size: 14px;
+}
+
+.time_stamp_note{
+    color: var(--green);
+    font-size: 12px;
+}
+
+.single_note_content{
+    color: whitesmoke;
+    font-size: 12px;
 }

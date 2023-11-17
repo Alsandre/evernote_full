@@ -1,6 +1,7 @@
 .notes_dashboard{
+    position: relative;
     box-sizing: border-box;
-    width: 55%;
+    width: 66%;
     height: 360px;
 
     background-color: var(--black-light);
@@ -22,6 +23,16 @@
     gap: 10px;
     flex: 1;
     padding: 0 20px 0 20px;
+}
+
+.empty_notes_container{
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 30px;
+    font-weight: 900;
+    opacity: 0.2;
 }
 
 .notes_container::-webkit-scrollbar {

@@ -31,7 +31,7 @@ export default function AddNew() {
           <ShortCutElemen 
               cName='shortCut_element' 
               firsIco={notes} text='Notes' 
-              linkName='/pages/CreateNote.js'
+              linkName='/pages/CreateNote'
           />
 
 

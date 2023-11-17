@@ -1,19 +1,27 @@
 import React from 'react'
 import { Routes, Route } from "react-router-dom"
-import Evernote from "./pages/Evernote.js"
-import CreateNote from './pages/CreateNote.js'
-import SideBar from './components/SideBar/SideBar.js'
+import Evernote from "./pages/Evernote"
+import CreateNote from './pages/CreateNote'
+import SignIn from './pages/SignIn'
+import PrivateRoutes from './components/PrivateRoutes'
+import NotePage from './pages/NotePage'
 
 function App() {
   return (
-    <>
-    <SideBar />
+    <div className='app'>
     <Routes>
-      <Route exact path='/' element={<Evernote />} />
-      <Route exact path='/pages/CreateNote.js' element={<CreateNote />} />
+    
+      <Route exact path='/' element={<SignIn />} />
+      
+
+      <Route element={<PrivateRoutes/>}>
+        <Route exact path='/pages/Evernote' element={<Evernote />} />
+        <Route exact path='/pages/CreateNote' element={<CreateNote />} />
+        <Route exact path='/pages/NotePage/:id' element={<NotePage />} />
+      </Route>
     </Routes>
 
-    </>
+    </div>
   )
 }
 

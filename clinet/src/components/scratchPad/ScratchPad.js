@@ -5,7 +5,7 @@ import SmallTitleComponent from '../smallTitleComponent/SmallTitleComponent'
 export default function ScratchPad() {
 
 const scratchRef = useRef(null)
-const [scratchValue, setScratchValue] = useState(JSON.parse(localStorage.getItem('scratchPad')) || null)
+const [scratchValue, setScratchValue] = useState(JSON.parse(localStorage.getItem('scratchPad')) || '')
 
 useEffect(()=>{
     localStorage.setItem('scratchPad', JSON.stringify(scratchValue))

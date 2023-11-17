@@ -1,0 +1,34 @@
+.single_note_page{
+    box-sizing: border-box;
+    position: relative;
+    padding-left: 250px;
+}
+
+.single_note_loading{
+    color: var(--green);
+    font-size: 30px;
+    font-weight: 900;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translateY(-50%);
+    opacity: 0.4;
+}
+
+.single_note_body{
+    padding: 50px;
+
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+.single_note_header{
+    text-align: center;
+    font-weight: 600;
+    font-size: 18px;
+}
+
+.buttons_for_singleNote{
+    display: flex;
+}

@@ -1,10 +1,13 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState, useContext } from 'react'
+import axios from 'axios';
+import {ProviderPass} from "../components/Provider"
 import "./styles/CreateNote.css"
 import ReactQuill from 'react-quill';
 import { Quill } from 'react-quill';
 import 'react-quill/dist/quill.snow.css';
 import BlotFormatter from 'quill-blot-formatter';
 import CreateButton from '../components/createButton/CreateButton';
+import SideBar from "../components/SideBar/SideBar"
 
 Quill.register('modules/blotFormatter', BlotFormatter);
 
@@ -44,18 +47,67 @@ const formats = [
 
 export default function CreateNote() {
 
+  const { user } = useContext(ProviderPass)
   const [content, setContetn] = useState(JSON.parse(localStorage.getItem('editorNote')) || {})
+  const [noteTitle,setNoteTitle] = useState(JSON.parse(localStorage.getItem('noteTitle')) || '')
+  const [sending, setSending] = useState(false)
+  const [status, setStatus] = useState(null)
+
+  const sendNote = async ()=> {
+
+    setSending(true)
+    
+        try {
+          const res = await axios.post(process.env.REACT_APP_CREATE_NOTE, {
+            content: content,
+            user: user,
+            noteTitle: noteTitle
+        }, {
+            withCredentials: true,
+            headers: { 'Content-type': 'application/json' },
+          } )
+
+          setStatus(res.data)
+          setSending(false)
+
+        } catch (error) {
+          setSending(false)
+          console.log(error);
+        }
+
+    setContetn({})
+    setNoteTitle('')
+  }
 
   useEffect(()=>{
     localStorage.setItem('editorNote', JSON.stringify(content))
   },[content])
 
-  return (
-    <div className='createNote'> 
+  useEffect(()=>{
+    localStorage.setItem('noteTitle', JSON.stringify(noteTitle))
+  },[noteTitle])
 
-    <p className='note_create_title'>Create Note</p>
+  return (
+    
+    <div className='createNote'> 
+    <SideBar />
+
+    
+      
+      <p className='note_create_title'>Create Note</p>
 
       <div className='noteArea'>
+
+        <input 
+          className='note_title_input' 
+          type='text' 
+          name='noteTitle' 
+          id='noteTitle' 
+          placeholder='Enter Note Title'
+          value={noteTitle} 
+          onChange={(e)=> setNoteTitle(e.target.value)} 
+        />
+
         <ReactQuill
             theme="snow"
             value={content}
@@ -66,7 +118,8 @@ export default function CreateNote() {
         />
       </div>
 
-      <CreateButton text='Create Note'/>
+      <CreateButton text='Create Note' funName={sendNote}/>
+      <p className='note_response_status'>{status}</p>
 
     </div>
   )

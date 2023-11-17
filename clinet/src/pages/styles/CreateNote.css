@@ -1,11 +1,12 @@
 .createNote{
+    position: relative;
     box-sizing: border-box;
     width: 100%;
     min-height: 100vh;
     padding-left: 250px;
     background-color: var(--dark-light);
     color: whitesmoke;
-    padding-bottom: 100px;
+    padding-bottom: 50px;
 }
 .note_create_title{
     text-align: center;
@@ -18,11 +19,35 @@
     box-sizing: border-box;
     padding: 0px 50px 50px 50px;
 
-    margin-bottom: 10px;
 }
 
 .custom_editor{
     height: 500px;
     overflow: hidden;
-    padding-bottom: 70px;
+    box-sizing: border-box;
+}
+
+.note_title_input{
+    box-sizing: border-box;
+    padding-left: 15px;
+    height: 40px;
+    width: 100%;
+    margin-bottom: 10px;
+    border: 1px solid whitesmoke;
+    color: whitesmoke;
+}
+
+.note_response_status{
+    text-align: center;
+    color: var(--green);
+    font-size: 12px;
+    margin-top: 10px;
+}
+
+@media (max-width:1440px) {
+    .custom_editor{
+        height: 350px;
+        overflow: hidden;
+        padding-bottom: 70px;
+    }
 }
