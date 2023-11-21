@@ -4,7 +4,7 @@ import cookieParser from "cookie-parser"
 import multer from "multer"
 import path from "path"
 import { userLogin } from "./routes/users.js"
-import { createNote, getNotes, getSingleNote, deleteSingleNote} from "./routes/notes.js"
+import { createNote, getNotes, getSingleNote, deleteSingleNote, updateNote} from "./routes/notes.js"
 
 const app = express()
 app.use(cors({origin: 'http://localhost:3000', credentials: true})); 
@@ -24,5 +24,6 @@ app.post('/createnote', createNote)
 app.get('/getnotes', getNotes)
 app.get('/notes/:id', getSingleNote)
 app.delete('/notes/deletenote/:id', deleteSingleNote)
+app.post('/notes/updatenote/:id', updateNote)
 
 app.listen(port)

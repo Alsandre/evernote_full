@@ -34,8 +34,7 @@ export const getNotes = (req, res) => {
         return res.status(200).json(data);
     })
 }
-    
-    
+     
 export const getSingleNote = (req, res) => {
     const userQuery = "SELECT * FROM users WHERE uid = ?"
     pool.query(userQuery, [req.query.uid], (userErr, userData)=>{
@@ -84,6 +83,29 @@ export const deleteSingleNote = (req, res) => {
             }
 
             return res.status(200).json('Note deleted successfully!!!');
+        });
+    });
+};
+
+export const updateNote = (req, res) => {
+    const userId = req.query.uid; // Assuming you have the user ID from the authentication middleware
+    const noteId = req.query.noteId;
+
+    // Check if the note with the given ID belongs to the authenticated user
+    const checkOwnershipQuery = "SELECT uid FROM notes WHERE uid = ?";
+    pool.query(checkOwnershipQuery, [userId], (userErr, userData) => {
+        if (userErr) {
+            return res.status(500).json("Error in user query: " + userErr);
+        }
+
+        const updateNoteQuery = "UPDATE notes SET noteTitle = ?, content = ? WHERE noteId = ?";
+
+        pool.query(updateNoteQuery, [req.body.noteTitle, req.body.content, req.query.noteId ], (updateErr, updateResult) => {
+            if (updateErr) {
+                return res.status(500).json("Error updating note: " + updateErr);
+            }
+
+            return res.status(200).json("Note updated successfully");
         });
     });
 };
