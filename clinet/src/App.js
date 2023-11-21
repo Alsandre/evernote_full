@@ -5,6 +5,7 @@ import CreateNote from './pages/CreateNote'
 import SignIn from './pages/SignIn'
 import PrivateRoutes from './components/PrivateRoutes'
 import NotePage from './pages/NotePage'
+import UpdateNote from './pages/UpdateNote'
 
 function App() {
   return (
@@ -12,12 +13,12 @@ function App() {
     <Routes>
     
       <Route exact path='/' element={<SignIn />} />
-      
-
+  
       <Route element={<PrivateRoutes/>}>
         <Route exact path='/pages/Evernote' element={<Evernote />} />
         <Route exact path='/pages/CreateNote' element={<CreateNote />} />
         <Route exact path='/pages/NotePage/:id' element={<NotePage />} />
+        <Route exact path='/pages/UpdateNote/:id' element={<UpdateNote />} />
       </Route>
     </Routes>
 

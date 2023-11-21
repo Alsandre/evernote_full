@@ -16,6 +16,7 @@ export default function NotesDashboard() {
   const [loading, setLoading] = useState(false)
 
   useEffect(()=>{
+    
 
     const getNotes = async () => {
 

@@ -1,10 +1,12 @@
 import React, {useEffect, useContext, useState} from 'react'
 import { ProviderPass } from "../components/Provider"
-import { useNavigate, useParams } from 'react-router-dom'
+import { useNavigate, useParams, Link } from 'react-router-dom'
 import axios from "axios"
 import SideBar from "../components/SideBar/SideBar"
 import "./styles/notePage.css"
-import CreateButton from '../components/createButton/CreateButton'
+
+import deleteIocn from "../utils/icons/delete.webp"
+import updatePost from "../utils/icons/updatePost.webp"
 
 export default function NotePage() {
 
@@ -17,6 +19,7 @@ export default function NotePage() {
 
     useEffect(()=>{
         setLoading(true)
+        
         const getSingleNote = async ()=>{
             try {
                 const res = await axios.get(`http://localhost:3300/notes/${id}`, 
@@ -60,8 +63,10 @@ export default function NotePage() {
                         </div>
 
                         <div className='buttons_for_singleNote'>
-                            <CreateButton text='Update'/>
-                            <CreateButton text='Fuck It' funName={handleDeleteNote}/>
+                            <Link to={`/pages/UpdateNote/${id}`}>
+                                <img src={updatePost} alt='update' className='notes_icons' />
+                            </Link>
+                            <img src={deleteIocn} alt='update' className='notes_icons' onClick={handleDeleteNote}/>
                         </div>
                    </div>
         }

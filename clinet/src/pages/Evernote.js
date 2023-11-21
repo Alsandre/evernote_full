@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from 'react'
+import React from 'react'
 import "./styles/evernote.css"
 import NotesDashboard from '../components/notesDashbouard/NotesDashboard'
 import ScratchPad from '../components/scratchPad/ScratchPad'
@@ -8,8 +8,6 @@ import SideBar from "../components/SideBar/SideBar"
 
 
 export default function Evernote() {
-
-  
 
   return (
     <>
