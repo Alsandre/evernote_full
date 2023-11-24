@@ -44,7 +44,7 @@ export default function NotePage() {
             {params: { noteId: id, uid: user.uid }, withCredentials:true})
             
             alert(res.data)
-            navigate('/pages/Evernote')
+            navigate('/pages/AllNotes')
         } catch (error) {
             console.log(error);
         }

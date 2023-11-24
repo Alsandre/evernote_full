@@ -24,7 +24,7 @@ export default function AllNotes() {
           params: { uid: user.uid },
           withCredentials: true,
         });
-        setNotesArray(res.data.reverse());
+        setNotesArray(res.data);
         setLoading(false);
       } catch (error) {
         console.log(error);
