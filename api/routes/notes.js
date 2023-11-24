@@ -1,4 +1,4 @@
-import { json } from "express";
+
 import {pool} from "../db.js"
 
 export const createNote = (req, res) => {
@@ -109,4 +109,3 @@ export const updateNote = (req, res) => {
         });
     });
 };
-
