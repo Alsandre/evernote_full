@@ -4,9 +4,11 @@ import { useNavigate, useParams, Link } from 'react-router-dom'
 import axios from "axios"
 import SideBar from "../components/SideBar/SideBar"
 import "./styles/notePage.css"
-
+import Container from "../components/container/Container"
 import deleteIocn from "../utils/icons/delete.webp"
 import updatePost from "../utils/icons/updatePost.webp"
+import Tasks from '../components/Tasks/Tasks'
+import CreateTask from "../components/Tasks/CreateTask"
 
 export default function NotePage() {
 
@@ -33,8 +35,7 @@ export default function NotePage() {
         }
 
         getSingleNote()
-
-    },[])
+    },[id, user.id])
 
     const handleDeleteNote = async () => {
 
@@ -51,8 +52,10 @@ export default function NotePage() {
     }
 
   return (
-    <>
+    <Container>
         <SideBar />
+        <Tasks />
+        <CreateTask />
 
         {loading ? <p className='single_note_loading'>Loading Note...</p>
                  : <div className='single_note_page'>
@@ -70,6 +73,6 @@ export default function NotePage() {
                         </div>
                    </div>
         }
-    </>
+    </Container>
   )
 }

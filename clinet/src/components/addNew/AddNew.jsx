@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useContext } from 'react'
 import "./AddNew.css"
 import ShortCutElemen from '../ShortCutElement/ShortCutElemen'
 
@@ -6,9 +6,10 @@ import addIco from "../../utils/icons/add.webp"
 import dropDownArrow from "../../utils/icons/down-arrow.webp"
 import checkedIco from "../../utils/icons/checked.webp"
 import notes from "../../utils/icons/notes.webp"
-
+import { ProviderPass } from '../Provider'
 
 export default function AddNew() {
+  const {CreateTaksHandler} = useContext(ProviderPass)
 
   const [dashClas, setDashClass] = useState('add_dashbouard')
 
@@ -39,6 +40,7 @@ export default function AddNew() {
               cName='shortCut_element_task' 
               firsIco={checkedIco} 
               text='Task'
+              funName={CreateTaksHandler}
           />
 
         </div>

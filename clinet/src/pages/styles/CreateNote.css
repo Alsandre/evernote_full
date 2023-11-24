@@ -2,11 +2,7 @@
     position: relative;
     box-sizing: border-box;
     width: 100%;
-    min-height: 100vh;
-    padding-left: 250px;
-    background-color: var(--dark-light);
     color: whitesmoke;
-    padding-bottom: 50px;
 }
 .note_create_title{
     text-align: center;

@@ -1,12 +1,8 @@
-.main_container{
+.evernote{
     position: relative;
     box-sizing: border-box;
     width: 100%;
     background-color: var(--black);
-    
-    padding-left: 250px;
-    padding-bottom: 100px;
-
     display: flex;
     flex-direction: column;
     gap: 30px;

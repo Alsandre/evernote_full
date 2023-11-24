@@ -1,8 +1,6 @@
 .single_note_page{
     box-sizing: border-box;
     position: relative;
-    padding-left: 250px;
-    padding-bottom: 50px;
 }
 
 .single_note_loading{

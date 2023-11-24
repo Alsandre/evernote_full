@@ -13,7 +13,7 @@ import CreateButton from "../createButton/CreateButton"
 
 export default function SideBar() {
 
-  const {handleLogout} = useContext(ProviderPass)
+  const {handleLogout, taskHandler, closeAllTaskElements} = useContext(ProviderPass)
 
   return (
     <div className='sidebar'>
@@ -24,9 +24,9 @@ export default function SideBar() {
         </div>
 
         <div className='sidebar_bottom'>
-          <SidebarLinkBlock linkName='Home' icon={home} path='/pages/Evernote'/>
-          <SidebarLinkBlock linkName='Notes' icon={checkedGrey} path='/'/>
-          <SidebarLinkBlock linkName='Tasks' icon={notesGrey}/>
+          <SidebarLinkBlock linkName='Home' icon={home} path='/pages/Evernote' funName={closeAllTaskElements} />
+          <SidebarLinkBlock linkName='Notes' icon={checkedGrey} path='/pages/AllNotes' funName={closeAllTaskElements} />
+          <SidebarLinkBlock linkName='Tasks' icon={notesGrey} funName={(taskHandler)}/>
         </div>
 
         <div className='logout_div'>
