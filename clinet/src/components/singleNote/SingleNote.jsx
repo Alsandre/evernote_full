@@ -2,10 +2,10 @@ import React, { useState } from 'react'
 import "./SingleNote.css"
 import { Link } from 'react-router-dom'
 
-export default function SingleNote({title, content, timeStamp, id}) {
+export default function SingleNote({title, content, timeStamp, id, funName}) {
 
   return (
-    <Link to={`/pages/NotePage/${id}`} className='singleNote'>
+    <Link to={`/pages/NotePage/${id}`} className='singleNote' onClick={funName}>
         <div className='singleNote_inner'>
           
           <div className='note_title_desc'>

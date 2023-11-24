@@ -9,7 +9,7 @@ import Tasks from '../components/Tasks/Tasks'
 import CreateTask from "../components/Tasks/CreateTask"
 
 export default function AllNotes() {
-  const { user } = useContext(ProviderPass);
+  const { user, closeAllTaskElements } = useContext(ProviderPass);
 
   const [notesArray, setNotesArray] = useState([]);
   const [notesArrayReversed, setNotesArrayReversed] = useState([]);
@@ -53,6 +53,7 @@ export default function AllNotes() {
               content={note.content}
               timeStamp={note.timeStamp}
               id={note.noteId}
+              funName={closeAllTaskElements}
             />
           );
         })}
