@@ -20,7 +20,7 @@ export const createTask = (req, res) => {
                 if (noteErr) {
                     return res.status(500).json("Error creating note");
                 }
-                return res.status(200).json("Note has been created successfully.");
+                return res.status(200).json("Task has been created successfully.");
             });
         } else {
             return res.status(404).json({ error: "User not found" });
@@ -43,3 +43,56 @@ export const getTasks = (req, res) => {
     })
 }
    
+export const updateTask = (req, res) => {
+    const userId = req.query.uid; // Assuming you have the user ID from the authentication middleware
+    const taskId = req.query.taskId;
+
+    // Check if the note with the given ID belongs to the authenticated user
+    const checkOwnershipQuery = "SELECT taskId FROM tasks WHERE taskUid = ?";
+    pool.query(checkOwnershipQuery, [userId], (userErr, userData) => {
+        if (userErr) {
+            return res.status(500).json("Error in user query: " + userErr);
+        }
+
+        const updateNoteQuery = "UPDATE tasks SET completed = ? WHERE taskId = ?";
+        const status = JSON.stringify(req.body.completed)
+
+        pool.query(updateNoteQuery, [status, req.body.taskId ], (updateErr, updateResult) => {
+            if (updateErr) {
+                return res.status(500).json("Error updating note: " + updateErr);
+            }
+
+            return res.status(200).json("Task updated successfully");
+        });
+    });
+};
+
+
+export const deleteTask = (req, res) => {
+    const userId = req.query.user; // Assuming you have the user ID from the authentication middleware
+    const taskId = req.query.taskId;
+    
+    // Check if the task with the given ID belongs to the authenticated user
+    const checkOwnershipQuery = "SELECT taskId FROM tasks WHERE taskUid = ?";
+    pool.query(checkOwnershipQuery, [userId], (userErr, userData) => {
+        if (userErr) {
+            return res.status(500).json("Error in user query: " + userErr);
+        }
+
+        const deleteTaskQuery = "DELETE FROM tasks WHERE taskId = ?";
+        
+        pool.query(deleteTaskQuery, [taskId], (deleteErr, deleteResult) => {
+            
+            if (deleteErr) {
+                return res.status(500).json("Error deleting task: " + deleteErr);
+            }
+
+            // if (deleteResult.affectedRows === 0) {
+            //     // No rows were deleted, indicating that the note with the given ID was not found
+            //     return res.status(404).json({ message: 'Note not found' });
+            // }
+
+            return res.status(200).json("Task deleted successfully" + taskId);
+        });
+    });
+};
