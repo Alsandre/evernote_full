@@ -9,7 +9,7 @@ import notes from "../../utils/icons/notes.webp"
 import { ProviderPass } from '../Provider'
 
 export default function AddNew() {
-  const {CreateTaksHandler} = useContext(ProviderPass)
+  const {CreateTaksHandler, closeAllTaskElements} = useContext(ProviderPass)
 
   const [dashClas, setDashClass] = useState('add_dashbouard')
 
@@ -40,7 +40,7 @@ export default function AddNew() {
               cName='shortCut_element_task' 
               firsIco={checkedIco} 
               text='Task'
-              funName={CreateTaksHandler}
+              funName={()=>{closeAllTaskElements(); CreateTaksHandler()}}
           />
 
         </div>

@@ -4,7 +4,7 @@ import axios from "axios";
 import TaskButtonComponent from "./TaskButtonComponent";
 
 export default function CreateTask() {
-  const { createTaks, CloseCreateTask, user } = useContext(ProviderPass);
+  const { createTaks, CloseCreateTask, user, closeAllTaskElements } = useContext(ProviderPass);
   const [taskContent, setTaskContent] = useState("");
   const createTaskPath = import.meta.env.VITE_REACT_APP_CREATE_TASK
   const [taskStatus, setTaskStatus] = useState('')
@@ -56,10 +56,10 @@ export default function CreateTask() {
           />
         </div>
 
-        <p className={taskStatus === 'Note has been created successfully.' ? 'task_status' : 'task_status_error'}>{taskStatus}</p>
+        <p className={taskStatus === 'Task has been created successfully.' ? 'task_status' : 'task_status_error'}>{taskStatus}</p>
 
         <div className="crt_tasks_btns">
-          <TaskButtonComponent text="Cancel" funName={() => {CloseCreateTask(); clearTaskStatus()}} />
+          <TaskButtonComponent text="Cancel" funName={() => {closeAllTaskElements(); clearTaskStatus()}} />
           <TaskButtonComponent text="Create Task" funName={sendTask} />
         </div>
       </div>
