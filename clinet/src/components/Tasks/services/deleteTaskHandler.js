@@ -21,7 +21,6 @@ export const deleteTaskHandler = () => {
       );
       
       setTaskHandlerWork(true);
-      setLoading(false);
     } catch (error) {
       console.log(error);
       setLoading(false);

@@ -5,8 +5,9 @@ import "./styles/allnotes.css";
 import SideBar from "../components/SideBar/SideBar";
 import SingleNote from "../components/singleNote/SingleNote";
 import Container from "../components/container/Container";
-import Tasks from '../components/Tasks/Tasks'
-import CreateTask from "../components/Tasks/CreateTask"
+import Tasks from "../components/Tasks/Tasks";
+import CreateTask from "../components/Tasks/CreateTask";
+import Sipnner from "../components/spinner/Sipnner";
 
 export default function AllNotes() {
   const { user, closeAllTaskElements } = useContext(ProviderPass);
@@ -14,13 +15,14 @@ export default function AllNotes() {
   const [notesArray, setNotesArray] = useState([]);
   const [notesArrayReversed, setNotesArrayReversed] = useState([]);
   const [loading, setLoading] = useState(false);
+  const getAllNotesPath = import.meta.env.VITE_REACT_APP_GET_ALL_NOTES;
 
   useEffect(() => {
     const getNotes = async () => {
       setLoading(true);
 
       try {
-        const res = await axios.get("http://localhost:3300/getnotes", {
+        const res = await axios.get(getAllNotesPath, {
           params: { uid: user.uid },
           withCredentials: true,
         });
@@ -40,24 +42,30 @@ export default function AllNotes() {
   }, [notesArray]);
 
   return (
-    <Container>
-      <SideBar />
-      <Tasks />
-      <CreateTask />
-      <div className="allnotes">
-        {notesArrayReversed?.map((note) => {
-          return (
-            <SingleNote
-              key={note.noteId}
-              title={note.noteTitle}
-              content={note.content}
-              timeStamp={note.timeStamp}
-              id={note.noteId}
-              funName={closeAllTaskElements}
-            />
-          );
-        })}
-      </div>
-    </Container>
+    <>
+      {loading ? (
+        <Sipnner />
+      ) : (
+        <Container>
+          <SideBar />
+          <Tasks />
+          <CreateTask />
+          <div className="allnotes">
+            {notesArrayReversed?.map((note) => {
+              return (
+                <SingleNote
+                  key={note.noteId}
+                  title={note.noteTitle}
+                  content={note.content}
+                  timeStamp={note.timeStamp}
+                  id={note.noteId}
+                  funName={closeAllTaskElements}
+                />
+              );
+            })}
+          </div>
+        </Container>
+      )}
+    </>
   );
 }

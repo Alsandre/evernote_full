@@ -1,17 +1,16 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useState } from "react";
 import "./Tasks.css";
 import { ProviderPass } from "../Provider";
 import TaskSingleElement from "./TaskSingleElement";
-import axios from "axios";
 import { getTaskService } from "./services/taskService";
 import { completeHandler } from "./services/completeHandler";
 import { deleteTaskHandler } from "./services/deleteTaskHandler";
 import Spinner from "../spinner/Sipnner";
 
 export default function Tasks() {
-  const { taskToggler, updateTaskArray, loading } = useContext(ProviderPass);
+  const { taskToggler, loading } = useContext(ProviderPass);
   const [activeElement, setActiveElement] = useState(null);
-
+  
   const { allTasksArrayReversed } = getTaskService()
   const { markAsComplete } = completeHandler()
   const { deleteHandler } = deleteTaskHandler()

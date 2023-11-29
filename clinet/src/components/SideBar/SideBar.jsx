@@ -13,10 +13,10 @@ import CreateButton from "../createButton/CreateButton"
 
 export default function SideBar() {
 
-  const {handleLogout, taskHandler, closeAllTaskElements} = useContext(ProviderPass)
+  const {handleLogout, taskHandler, closeAllTaskElements, sidebarHandler} = useContext(ProviderPass)
 
   return (
-    <div className='sidebar'>
+    <div className={sidebarHandler ? 'sidebar sidebar_active' : 'sidebar'}>
 
         <div className='sidebar_top'>
           <Search />

@@ -4,7 +4,7 @@ import axios from "axios";
 
 export const completeHandler = () => {
   const { user, setTaskHandlerWork, setLoading } = useContext(ProviderPass);
-  const taskUpdatePath = import.meta.env.VITE_REACT_APP__TASK_UPDATE;
+  const taskUpdatePath = import.meta.env.VITE_REACT_APP_TASK_UPDATE;
 
   const markAsComplete = async (elementId) => {
     setLoading(true);
@@ -26,11 +26,12 @@ export const completeHandler = () => {
         setTaskHandlerWork(true);
       }
 
-      setLoading(false);
+     
     } catch (error) {
       console.log(error);
       setLoading(false);
     }
+
   };
 
   return {

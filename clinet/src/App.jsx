@@ -7,10 +7,12 @@ import PrivateRoutes from "./components/PrivateRoutes";
 import NotePage from "./pages/NotePage";
 import UpdateNote from "./pages/UpdateNote";
 import AllNotes from "./pages/AllNotes";
+import ResponsiveMenuIcon from "./components/responsiveMenuIcon/responsiveMenuIcon";
 
 function App() {
   return (
     <div className="app">
+      <ResponsiveMenuIcon />
       <Routes>
         <Route exact path="/" element={<SignIn />} />
 

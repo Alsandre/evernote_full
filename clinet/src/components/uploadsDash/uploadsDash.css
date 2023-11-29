@@ -1,7 +1,6 @@
 .uploadsDash{
     position: relative;
-    left: 30px;
-    width: 96%;
+    width: 99%;
     height: 260px;
 
     background-color: var(--black-light);

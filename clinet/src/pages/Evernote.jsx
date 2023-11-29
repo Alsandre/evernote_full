@@ -25,7 +25,10 @@ export default function Evernote() {
               <ScratchPad />
             </div> 
 
-            <UploadsDash /> 
+            <div className='upload_items'>
+              <UploadsDash /> 
+            </div>
+            
         </div>
     </Container>
   )

@@ -19,12 +19,15 @@ export default function NotePage() {
     const [noteContent, setNoteContent] = useState()
     const navigate = useNavigate()
 
+    const getSingleNotePath = import.meta.env.VITE_REACT_APP_UPDATE_NOTE
+    const deleteSinglePostPath = import.meta.env.VITE_REACT_APP_DELETE_NOTE
+
     useEffect(()=>{
         setLoading(true)
         
         const getSingleNote = async ()=>{
             try {
-                const res = await axios.get(`http://localhost:3300/notes/${id}`, 
+                const res = await axios.get(`${getSingleNotePath + id}`, 
                 {params: { noteId: id, uid: user.uid }, withCredentials:true})
                 setLoading(false)
                 setNoteContent(res.data[0])
@@ -40,7 +43,7 @@ export default function NotePage() {
     const handleDeleteNote = async () => {
 
         try {
-            const res = await axios.delete(`http://localhost:3300/notes/deletenote/${id}`, 
+            const res = await axios.delete(`${deleteSinglePostPath + id}`, 
             {params: { noteId: id, uid: user.uid }, withCredentials:true})
             
             alert(res.data)

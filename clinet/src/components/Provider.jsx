@@ -19,6 +19,7 @@ export const ProviderContext = ({ children }) => {
   const [loading, setLoading] = useState(false);
   const [user, setUser] = useState(null);
   const [taskHandlerWork, setTaskHandlerWork] = useState(false);
+  const [sidebarHandler, setSideBarHandler] = useState(false)
   const [currentUser, setCurrentUser] = useState(
     JSON.parse(localStorage.getItem("currentUser")) || null
   );
@@ -129,6 +130,8 @@ export const ProviderContext = ({ children }) => {
         setTaskHandlerWork,
         loading,
         setLoading,
+        sidebarHandler, 
+        setSideBarHandler
       }}
     >
       {children}

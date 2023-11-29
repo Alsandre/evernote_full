@@ -45,3 +45,10 @@
     vertical-align: top; 
     resize: none;
 }
+
+@media (max-width:1000px) {
+    .scratchPad{
+        width: 100%;
+        height: 200px;
+    }
+}

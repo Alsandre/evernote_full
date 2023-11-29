@@ -47,3 +47,9 @@
 .notes_container::-webkit-scrollbar-track {
     background-color: var(--dark-light); 
 }
+
+@media (max-width:1000px) {
+    .notes_dashboard{
+        width: 100%;
+    }
+}

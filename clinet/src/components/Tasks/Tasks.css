@@ -170,3 +170,9 @@
 .task_trash{
     width:15px
 }
+
+@media (max-width:768px) {
+    .tasks{
+        display: none;
+    }
+}

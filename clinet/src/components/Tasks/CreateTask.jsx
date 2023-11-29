@@ -7,11 +7,8 @@ export default function CreateTask() {
   const {
     createTaks,
     setTaskHandlerWork,
-    CloseCreateTask,
     user,
-    closeAllTaskElements,
-    loading,
-    setLoading,
+    closeAllTaskElements
   } = useContext(ProviderPass);
   const [taskContent, setTaskContent] = useState("");
   const createTaskPath = import.meta.env.VITE_REACT_APP_CREATE_TASK;
@@ -44,7 +41,7 @@ export default function CreateTask() {
         setTaskStatus("Here Is Some Error");
       }
     } else {
-      setTaskStatus("Enter Taks You Lazy..");
+      setTaskStatus("Enter Task You Lazy..");
     }
   };
 

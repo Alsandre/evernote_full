@@ -13,11 +13,13 @@ export default function NotesDashboard() {
   const [notesArrayReversed, setNotesArrayReversed] = useState([]);
   const [loading, setLoading] = useState(false);
 
+  const getAllNotesPath = import.meta.env.VITE_REACT_APP_GET_ALL_NOTES
+
   useEffect(() => {
     const getNotes = async () => {
       setLoading(true);
       try {
-        const res = await axios.get("http://localhost:3300/getnotes", {
+        const res = await axios.get(getAllNotesPath, {
           params: { uid: user.uid },
           withCredentials: true,
         });
