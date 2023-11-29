@@ -44,18 +44,13 @@ export const getTasks = (req, res) => {
 }
    
 export const updateTask = (req, res) => {
-    const userId = req.query.uid; // Assuming you have the user ID from the authentication middleware
-    const taskId = req.query.taskId;
-
+    const status = JSON.stringify(req.body.completed)
+    console.log(status);
+    console.log(req.body.taskId);
     // Check if the note with the given ID belongs to the authenticated user
-    const checkOwnershipQuery = "SELECT taskId FROM tasks WHERE taskUid = ?";
-    pool.query(checkOwnershipQuery, [userId], (userErr, userData) => {
-        if (userErr) {
-            return res.status(500).json("Error in user query: " + userErr);
-        }
-
-        const updateNoteQuery = "UPDATE tasks SET completed = ? WHERE taskId = ?";
-        const status = JSON.stringify(req.body.completed)
+    const updateNoteQuery = "UPDATE tasks SET completed = ? WHERE taskId = ?";
+        
+        
 
         pool.query(updateNoteQuery, [status, req.body.taskId ], (updateErr, updateResult) => {
             if (updateErr) {
@@ -64,7 +59,6 @@ export const updateTask = (req, res) => {
 
             return res.status(200).json("Task updated successfully");
         });
-    });
 };
 
 
