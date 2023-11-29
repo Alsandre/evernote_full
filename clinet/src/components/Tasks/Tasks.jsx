@@ -3,93 +3,21 @@ import "./Tasks.css";
 import { ProviderPass } from "../Provider";
 import TaskSingleElement from "./TaskSingleElement";
 import axios from "axios";
+import { getTaskService } from "./services/taskService";
+import { completeHandler } from "./services/completeHandler";
+import { deleteTaskHandler } from "./services/deleteTaskHandler";
 import Spinner from "../spinner/Sipnner";
 
 export default function Tasks() {
-  const { user, taskToggler } = useContext(ProviderPass);
-  const [allTasksArray, setAllTasksArray] = useState([]);
-  const [allTasksArrayReversed, setAllTasksArrayReversed] = useState([]);
-  const [loading, setLoading] = useState(false);
+  const { taskToggler, updateTaskArray, loading } = useContext(ProviderPass);
   const [activeElement, setActiveElement] = useState(null);
-  const [status, setStatus] = useState(null);
 
-  const getAllTasksPath = import.meta.env.VITE_REACT_APP_GET_TASK;
-
-  const getTasks = async () => {
-    try {
-      const res = await axios.get(getAllTasksPath, {
-        params: { uid: user.uid },
-        withCredentials: true,
-      });
-      console.log(res.data);
-      setAllTasksArray(res.data);
-      setLoading(false);
-    } catch (error) {
-      setLoading(false);
-      console.log(error);
-    }
-  };
-
-  useEffect(() => {
-    setLoading(true);
-
-    if (taskToggler) {
-      getTasks();
-    }
-  }, [taskToggler]);
-
-  useEffect(() => {
-    setAllTasksArrayReversed(allTasksArray.reverse());
-  }, [allTasksArray]);
-
-  const markAsComplete = async (elementId) => {
-    setStatus(true);
-    setLoading(true);
-    try {
-      await axios.post(
-        `http://localhost:3300/updatetask/${elementId}`,
-        {
-          completed: status,
-          user: user,
-          taskId: activeElement,
-        },
-        {
-          withCredentials: true,
-          headers: { "Content-type": "application/json" },
-        }
-      );
-
-      getTasks();
-      setLoading(false);
-    } catch (error) {
-      console.log(error);
-      setLoading(false);
-    }
-  };
-
-  const deleteHandler = async (elementId) => {
-    setLoading(true);
-    setActiveElement(elementId)
-    try {
-       const res = await axios.delete(`http://localhost:3300/deletetask/${elementId}`, 
-       {
-        params: {user: user.uid,
-        taskId: elementId}
-      },
-      {
-        withCredentials: true,
-        headers: { "Content-type": "application/json" },
-      })
-      setLoading(false);
-      getTasks()
-    } catch (error) {
-      console.log(error);
-      setLoading(false)
-    }
-  }
+  const { allTasksArrayReversed } = getTaskService()
+  const { markAsComplete } = completeHandler()
+  const { deleteHandler } = deleteTaskHandler()
 
   return (
-    <div className={taskToggler ? "tasks" : "tasksDisabled"}>
+    <div className={taskToggler ? "tasks" : "tasks tasksDisabled"}>
       <div className="task_elements">
         {loading ? (
           <Spinner />
@@ -103,11 +31,15 @@ export default function Tasks() {
                   (activeElement === item.taskId && "task_circle_filled") ||
                   (item.completed === "true" && "task_circle_filled")
                 }
-                funName={() => (
-                    (item.taskId), setActiveElement(item.taskId)
+                bodyClass={
+                  (activeElement === item.taskId && "task_single_element_body_completed") ||
+                  (item.completed === "true" && "task_single_element_body_completed")
+                }
+                deleteHandler={() => (
+                  setActiveElement(item.taskId), deleteHandler(item.taskId)
                 )}
-                deleteHandler={()=>(
-                   deleteHandler(item.taskId)
+                completedHandler={() => (
+                  setActiveElement(item.taskId), markAsComplete(item.taskId)
                 )}
               />
             );

@@ -16,13 +16,15 @@ export const ProviderContext = ({ children }) => {
   const navigate = useNavigate();
   const [taskToggler, setTaskToggler] = useState(false);
   const [createTaks, setCreateTask] = useState(false);
+  const [loading, setLoading] = useState(false);
   const [user, setUser] = useState(null);
+  const [taskHandlerWork, setTaskHandlerWork] = useState(false);
   const [currentUser, setCurrentUser] = useState(
     JSON.parse(localStorage.getItem("currentUser")) || null
   );
   const auth = getAuth(app);
 
-  const loginPath = import.meta.env.VITE_REACT_APP_LOGIN
+  const loginPath = import.meta.env.VITE_REACT_APP_LOGIN;
 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (user) => {
@@ -106,9 +108,9 @@ export const ProviderContext = ({ children }) => {
   };
 
   const closeAllTaskElements = () => {
-    setTaskToggler(false)
-    setCreateTask(false)
-  }
+    setTaskToggler(false);
+    setCreateTask(false);
+  };
 
   return (
     <ProviderPass.Provider
@@ -122,7 +124,11 @@ export const ProviderContext = ({ children }) => {
         CreateTaksHandler,
         createTaks,
         CloseCreateTask,
-        closeAllTaskElements
+        closeAllTaskElements,
+        taskHandlerWork,
+        setTaskHandlerWork,
+        loading,
+        setLoading,
       }}
     >
       {children}

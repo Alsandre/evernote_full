@@ -16,7 +16,6 @@ export default function NotesDashboard() {
   useEffect(() => {
     const getNotes = async () => {
       setLoading(true);
-      console.log(user);
       try {
         const res = await axios.get("http://localhost:3300/getnotes", {
           params: { uid: user.uid },
