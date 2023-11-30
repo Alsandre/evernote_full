@@ -43,12 +43,12 @@ export default function AllNotes() {
 
   return (
     <>
+    <Tasks />
       {loading ? (
         <Sipnner />
       ) : (
         <Container>
           <SideBar />
-          <Tasks />
           <CreateTask />
           <div className="allnotes">
             {notesArrayReversed?.map((note) => {

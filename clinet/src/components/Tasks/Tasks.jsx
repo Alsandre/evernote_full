@@ -2,9 +2,9 @@ import React, { useContext, useState } from "react";
 import "./Tasks.css";
 import { ProviderPass } from "../Provider";
 import TaskSingleElement from "./TaskSingleElement";
-import { getTaskService } from "./services/taskService";
-import { completeHandler } from "./services/completeHandler";
-import { deleteTaskHandler } from "./services/deleteTaskHandler";
+import { GetTaskService } from "./services/taskService";
+import { CompleteHandler } from "./services/completeHandler";
+import { DeleteTaskHandler } from "./services/deleteTaskHandler";
 import Spinner from "../spinner/Sipnner";
 import closeTaskIcon from "../../utils/icons/closeTaskIcon.webp" 
 
@@ -12,9 +12,9 @@ export default function Tasks() {
   const { taskToggler, loading, taskHandler } = useContext(ProviderPass);
   const [activeElement, setActiveElement] = useState(null);
   
-  const { allTasksArrayReversed } = getTaskService()
-  const { markAsComplete } = completeHandler()
-  const { deleteHandler } = deleteTaskHandler()
+  const { allTasksArrayReversed } = GetTaskService()
+  const { markAsComplete } = CompleteHandler()
+  const { deleteHandler } = DeleteTaskHandler()
 
   return (
     <div className={taskToggler ? "tasks" : "tasks tasksDisabled"}>

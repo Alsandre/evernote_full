@@ -1,8 +1,8 @@
-import { useContext, useEffect, useState } from "react";
+import { useContext } from "react";
 import { ProviderPass } from "../../Provider";
 import axios from "axios";
 
-export const completeHandler = () => {
+export const CompleteHandler = () => {
   const { user, setTaskHandlerWork, setLoading } = useContext(ProviderPass);
   const taskUpdatePath = import.meta.env.VITE_REACT_APP_TASK_UPDATE;
 

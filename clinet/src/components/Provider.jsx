@@ -21,6 +21,7 @@ export const ProviderContext = ({ children }) => {
   const [taskHandlerWork, setTaskHandlerWork] = useState(false);
   const [sidebarHandler, setSideBarHandler] = useState(false)
   const [signInError, setSignInError] = useState(false)
+  const [searchStatus, setSearchStatus] = useState(false)
   const [currentUser, setCurrentUser] = useState(
     JSON.parse(localStorage.getItem("currentUser")) || null
   );
@@ -140,7 +141,9 @@ export const ProviderContext = ({ children }) => {
         setLoading,
         sidebarHandler, 
         setSideBarHandler,
-        signInError
+        signInError,
+        searchStatus,
+        setSearchStatus
       }}
     >
       {children}
