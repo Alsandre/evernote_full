@@ -1,22 +1,11 @@
-import React, { useEffect, useContext } from 'react';
+import React, {useContext } from 'react';
 import CreateButton from '../components/createButton/CreateButton';
 import { ProviderPass } from '../components/Provider';
 import './styles/signin.css';
-import { useNavigate } from 'react-router-dom';
 
 
 export default function SignIn() {
-
-  const navigate = useNavigate()
-  
-  const {currentUser, authHandler} = useContext(ProviderPass)
-
-  useEffect(()=>{
-    if(currentUser){
-      navigate('/pages/Evernote')
-    }
-  },[currentUser])
-
+  const { authHandler} = useContext(ProviderPass)
 
   return (
     <div className='signin'>

@@ -19,7 +19,6 @@ export const getTaskService = () => {
       setAllTasksArray(res.data);
       setLoading(false);
       setTaskHandlerWork(false);
-      console.log('i am done');
     } catch (error) {
       setLoading(false);
       console.log(error);

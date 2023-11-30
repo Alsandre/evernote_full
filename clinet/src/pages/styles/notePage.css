@@ -39,3 +39,10 @@
     width: auto;
     cursor: pointer;
 }
+
+@media (max-width:768px) {
+    .single_note_loading{
+        font-size: 20px;
+        transform: translate(-50%);
+    }
+}

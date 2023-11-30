@@ -20,6 +20,7 @@ export const ProviderContext = ({ children }) => {
   const [user, setUser] = useState(null);
   const [taskHandlerWork, setTaskHandlerWork] = useState(false);
   const [sidebarHandler, setSideBarHandler] = useState(false)
+  const [signInError, setSignInError] = useState(false)
   const [currentUser, setCurrentUser] = useState(
     JSON.parse(localStorage.getItem("currentUser")) || null
   );
@@ -62,17 +63,24 @@ export const ProviderContext = ({ children }) => {
         photoURL: result.user.photoURL,
       };
 
-      await axios.post(loginPath, userData, {
+      const res = await axios.post(loginPath, userData, {
         withCredentials: true,
         headers: { "Content-type": "application/json" },
       });
+
+      if(res.status === 200){
+        navigate("/pages/Evernote");
+      }
+      
     } catch (error) {
       console.error("Authentication Error:", error.message);
       console.log(error);
-      // handleLogout()
+      setSignInError(true)
+      navigate('/')
+      handleLogout()
     }
 
-    navigate("/pages/Evernote");
+   
   };
 
   const handleLogout = async () => {
@@ -131,7 +139,8 @@ export const ProviderContext = ({ children }) => {
         loading,
         setLoading,
         sidebarHandler, 
-        setSideBarHandler
+        setSideBarHandler,
+        signInError
       }}
     >
       {children}

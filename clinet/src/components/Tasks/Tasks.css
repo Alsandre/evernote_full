@@ -93,6 +93,7 @@
     box-sizing: border-box;
     border-radius: 10px;
     width: 600px;
+    max-width: 90%;
     height: 200px;
     background-color: var(--black-light);
     position: absolute;

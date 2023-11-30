@@ -1,9 +1,17 @@
 .allnotes{
     box-sizing:border-box ;
-    width: 100%;
+    width: fit-content;
     padding: 50px 50px 50px 50px;
 
     display: flex;
     gap: 10px;
     flex-wrap: wrap;
+    margin: 0 auto;
+}
+
+@media (max-width:465px) {
+    .allnotes{
+        justify-content: center;
+        padding: 80px 50px 50px 50px;
+    }
 }

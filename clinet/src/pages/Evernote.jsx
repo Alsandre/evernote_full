@@ -8,6 +8,7 @@ import SideBar from "../components/SideBar/SideBar"
 import Container from '../components/container/Container'
 import Tasks from '../components/Tasks/Tasks'
 import CreateTask from "../components/Tasks/CreateTask"
+import GreetingName from '../components/greetingName/GreetingName'
 
 export default function Evernote() {
 
@@ -18,6 +19,7 @@ export default function Evernote() {
       <SideBar />
       <div className='evernote'>
         <CurrentDate />
+        <GreetingName />
             <div className='main_container_bg' />
               
             <div className='top_widgets'>
