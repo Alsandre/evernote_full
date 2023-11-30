@@ -6,7 +6,7 @@ import "./responsiveMenuIcon.css"
 
 export default function ResponsiveMenuIcon() {
 
-    const {sidebarHandler,setSideBarHandler} = useContext(ProviderPass)
+    const {sidebarHandler,setSideBarHandler, setTaskToggler} = useContext(ProviderPass)
     const [menuIcon, setMenuIcon] = useState(menuOpen)
 
     const menuHandler = () => {

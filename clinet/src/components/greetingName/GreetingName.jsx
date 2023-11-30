@@ -8,6 +8,6 @@ export default function GreetingName() {
     const name = JSON.parse(currentUser)
 
   return (
-    <div div className='GreetingName'>Hello, {name}</div>
+    <div className='GreetingName'>Hello, {name}</div>
   )
 }

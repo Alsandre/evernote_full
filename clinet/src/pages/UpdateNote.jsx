@@ -111,7 +111,6 @@ export default function UpdateNote() {
           withCredentials: true,
         });
         setLoading(false);
-        console.log(res.data[0]);
         setNoteTitle(res.data[0].noteTitle);
         setNoteContent(res.data[0].content);
       } catch (error) {

@@ -6,9 +6,10 @@ import { getTaskService } from "./services/taskService";
 import { completeHandler } from "./services/completeHandler";
 import { deleteTaskHandler } from "./services/deleteTaskHandler";
 import Spinner from "../spinner/Sipnner";
+import closeTaskIcon from "../../utils/icons/closeTaskIcon.webp" 
 
 export default function Tasks() {
-  const { taskToggler, loading } = useContext(ProviderPass);
+  const { taskToggler, loading, taskHandler } = useContext(ProviderPass);
   const [activeElement, setActiveElement] = useState(null);
   
   const { allTasksArrayReversed } = getTaskService()
@@ -17,6 +18,7 @@ export default function Tasks() {
 
   return (
     <div className={taskToggler ? "tasks" : "tasks tasksDisabled"}>
+      <img src={closeTaskIcon} alt="task closer" className="task_closer" onClick={taskHandler} />
       <div className="task_elements">
         {loading ? (
           <Spinner />
